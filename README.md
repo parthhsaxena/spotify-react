@@ -6,4 +6,4 @@
 # Features
 
     - Rendering Featured Playlists on Home Screen
-    -
+    - Implementing Search Functionality

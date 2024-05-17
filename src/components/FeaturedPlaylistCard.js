@@ -10,6 +10,7 @@ const FeaturedPlaylistCard = ({ info }) => {
         <li className="font-semibold text-slate-800">{name}</li>
         <li className="text-sm text-slate-600 pt-2">{description}</li>
       </ul>
+      {/* <button className="hover:bg-green-800 h-20 w-20" /> */}
     </div>
   );
 };
