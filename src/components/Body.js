@@ -5,6 +5,13 @@ import SearchedPlaylistCard from "./SearchedPlaylistCard";
 import { ACCESS_CODE, FEATURED_PLAYLISTS } from "../utils/constants";
 
 const Body = () => {
+  // Implementing Loader
+  const [loader, setLoader] = useState(false);
+  useEffect(() => {
+    loader == false ? setLoader(true) : setLoader(false);
+  }, []);
+  console.log(loader);
+
   // Implementing Search Feature
   const [searchQuery, setSearchQuery] = useState("");
   const [updatedPlaylists, setUpdatedPlaylists] = useState([]);
