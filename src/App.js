@@ -1,7 +1,4 @@
 import React from "react";
-import Body from "./components/Body";
-import Sidebar from "./components/Sidebar";
-import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";

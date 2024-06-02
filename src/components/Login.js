@@ -10,6 +10,7 @@ const Login = () => {
   const handleButtonClick = () => {
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
+    if (message) return;
   };
 
   const toggleSignInForm = () => {
