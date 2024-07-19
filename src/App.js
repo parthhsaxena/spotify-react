@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";
@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { auth } from "./utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "./utils/userSlice";
+import Profile from "./components/Profile";
+import PlaylistItem from "./components/PlaylistItem";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,8 +17,16 @@ function App() {
       element: <Home />,
     },
     {
-      path: "/profile",
+      path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/profile",
+      element: <Profile />,
+    },
+    {
+      path: "/items",
+      element: <PlaylistItem />,
     },
   ]);
 

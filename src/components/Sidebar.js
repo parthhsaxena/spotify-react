@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -7,10 +6,7 @@ const Sidebar = () => {
       <button className="m-1 p-2 border border-slate-500 text-left">
         🏠 Home
       </button>
-      <Link
-        className="m-1 p-2 border border-slate-500 text-left"
-        to={"/profile"}
-      >
+      <Link className="m-1 p-2 border border-slate-500 text-left" to={"/login"}>
         Profile
       </Link>
       <hr className="w-28 h-1 mx-auto my-4 border-0 rounded bg-gray-700" />

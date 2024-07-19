@@ -10,7 +10,6 @@ const Body = () => {
   useEffect(() => {
     loader == false ? setLoader(true) : setLoader(false);
   }, []);
-  console.log(loader);
 
   // Implementing Search Feature
   const [searchQuery, setSearchQuery] = useState("");
@@ -60,7 +59,7 @@ const Body = () => {
   //     <Shimmer />
   //   ) : (
   return searchQuery.length > 0 ? (
-    <div className="mx-4 my-5">
+    <div className="mx-2 my-5">
       <input
         placeholder="Search"
         type="text"
@@ -74,14 +73,14 @@ const Body = () => {
       </div>
     </div>
   ) : (
-    <div className="mx-4 my-5">
+    <div className="mx-2 my-5">
       <input
         placeholder="Search"
         type="text"
         className="w-96 shadow-sm border rounded-full px-4 py-2 bg-gray-50 ring-[3px] ring-emerald-500 ring-inset"
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <div className="w-10/12 mt-10 flex flex-wrap">
+      <div className="flex flex-wrap">
         {featuredPlaylists?.map((play) => {
           return <FeaturedPlaylistCard key={play.id} info={play} />;
         })}
