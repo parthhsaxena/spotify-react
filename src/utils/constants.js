@@ -1,10 +1,10 @@
 const CLIENT_ID = "f367fd0ef2b042d8af8095db950cabcc";
 
 export const ACCESS_CODE =
-  "Bearer BQCAD2L8MeBXOZUoRqmWAu1ezzW5xagivvXMYEibGBonyIGUuGSfC4gqi0hJ6QlYJxhj0jt185mTNWFbZ01CP4zwEdsZcFi2XypK_Ow-Icv8t_lmSxg";
+  "Bearer BQAbXUCut0N8QMSooonAPDB-uFV99T_z-4PqgzgVyP8juoKYIwowN61vQDm_GRIETkE-QLCGbr68nNQ56NKOaeuAy6tYDt06kISHugOcYzlHqMTIMJ0";
 
 export const FEATURED_PLAYLISTS =
-  "https://api.spotify.com/v1/browse/featured-playlists?locale=hi_IN&limit=50";
+  "https://api.spotify.com/v1/browse/featured-playlists?locale=hi_IN&limit=24";
 
 export const millisecondsToDuration = function (milliseconds) {
   let seconds = Math.floor(milliseconds / 1000);

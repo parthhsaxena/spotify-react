@@ -29,19 +29,8 @@ const PlaylistItem = () => {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      {/* <div className="sticky top-1 shadow-md shadow-zinc-500 bg-gray-700 p-0.5 my-0.5 mx-24">
-        <div className="flex justify-between font-medium text-slate-200 ">
-          <div>
-            <div className="text-sm">Title</div>
-          </div>
-          <div className="space-x-36 space-y-2">
-            <div className="text-sm">Date Added</div>
-            <div className="text-sm">Duration</div>
-          </div>
-        </div>
-      </div> */}
       <div className="bg-white shadow overflow-hidden sm:rounded-lg cursor-default sticky top-1">
-        <div className="grid grid-cols-12 gap-4 p-4 bg-gray-700 text-white  z-10">
+        <div className="grid grid-cols-12 gap-4 p-4 bg-gray-700 text-white z-10">
           <div className="col-span-6 font-semibold ">Song</div>
           <div className="col-span-3 font-semibold ">Added</div>
           <div className="col-span-3 font-semibold ">Duration</div>
