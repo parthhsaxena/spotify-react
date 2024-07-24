@@ -18,7 +18,9 @@ const FeaturedPlaylistCard = ({ info }) => {
       <img src={url} alt="album-art" />
       <ul>
         <li className="font-semibold text-slate-800">{name}</li>
-        <li className="text-sm text-slate-600 pt-2">{description}</li>
+        <li className="text-sm text-slate-600 pt-2 line-clamp-3">
+          {description}
+        </li>
       </ul>
       {/* <button className="hover:bg-green-800 h-20 w-20" /> */}
     </div>

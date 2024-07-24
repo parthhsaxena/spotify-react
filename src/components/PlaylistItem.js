@@ -31,13 +31,14 @@ const PlaylistItem = () => {
     <div className="container mx-auto px-4 py-6">
       <div className="bg-white shadow overflow-hidden sm:rounded-lg cursor-default sticky top-1">
         <div className="grid grid-cols-12 gap-4 p-4 bg-gray-700 text-white z-10">
-          <div className="col-span-6 font-semibold ">Song</div>
+          <div className="col-span-1 font-semibold ">#</div>
+          <div className="col-span-5 font-semibold ">Song</div>
           <div className="col-span-3 font-semibold ">Added</div>
           <div className="col-span-3 font-semibold ">Duration</div>
         </div>
       </div>
-      {playlistItems?.map((p) => {
-        return <Item info={p} />;
+      {playlistItems?.map((p, index) => {
+        return <Item key={p.track.id} info={p} index={index + 1} />;
       })}
     </div>
   );
