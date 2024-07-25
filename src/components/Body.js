@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import FeaturedPlaylistCard from "./FeaturedPlaylistCard";
 import SearchedPlaylistCard from "./SearchedPlaylistCard";
-import { ACCESS_CODE, FEATURED_PLAYLISTS } from "../utils/constants";
+import { FEATURED_PLAYLISTS } from "../utils/constants";
+import { useAuthToken } from "../utils/refreshToken";
 
 const Body = () => {
+  const accessToken = useAuthToken();
+
   // Implementing Loader
   const [loader, setLoader] = useState(false);
   useEffect(() => {
@@ -16,7 +19,11 @@ const Body = () => {
   const [updatedPlaylists, setUpdatedPlaylists] = useState([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => getSearchData(), 1000);
+    const timer = setTimeout(() => {
+      if (searchQuery) {
+        getSearchData();
+      }
+    }, 1000);
 
     return () => {
       clearTimeout(timer);
@@ -24,17 +31,24 @@ const Body = () => {
   }, [searchQuery]);
 
   const getSearchData = async () => {
-    const data = await fetch(
-      "https://api.spotify.com/v1/search?q=" +
-        searchQuery +
-        "&type=playlist&market=IN&limit=20",
+    if (!accessToken) return;
+
+    const response = await fetch(
+      `https://api.spotify.com/v1/search?q=${encodeURIComponent(
+        searchQuery
+      )}&type=playlist&market=IN&limit=20`,
       {
         headers: {
-          Authorization: ACCESS_CODE,
+          Authorization: `Bearer ${accessToken}`,
         },
       }
     );
-    const json = await data.json();
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch search data");
+    }
+
+    const json = await response.json();
     setUpdatedPlaylists(json?.playlists?.items || []);
   };
 
@@ -42,18 +56,25 @@ const Body = () => {
   const [featuredPlaylists, setFeaturedPlaylists] = useState([]);
 
   useEffect(() => {
-    playlist_data();
-  }, []);
+    const fetchPlaylists = async () => {
+      if (!accessToken) return;
 
-  const playlist_data = async () => {
-    const data = await fetch(FEATURED_PLAYLISTS, {
-      headers: {
-        Authorization: ACCESS_CODE,
-      },
-    });
-    const json = await data.json();
-    setFeaturedPlaylists(json?.playlists?.items);
-  };
+      const response = await fetch(FEATURED_PLAYLISTS, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch playlists");
+      }
+
+      const json = await response.json();
+      setFeaturedPlaylists(json?.playlists?.items);
+    };
+
+    fetchPlaylists();
+  }, [accessToken]);
 
   //   return featuredPlaylists.length === 0 ? (
   //     <Shimmer />
@@ -81,9 +102,9 @@ const Body = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <div className="flex flex-wrap">
-        {featuredPlaylists?.map((play) => {
-          return <FeaturedPlaylistCard key={play.id} info={play} />;
-        })}
+        {featuredPlaylists.map((play) => (
+          <FeaturedPlaylistCard key={play.id} info={play} />
+        ))}
       </div>
     </div>
   );
