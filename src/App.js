@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Browse from "./components/Browse";
 import { useDispatch } from "react-redux";
 import { auth } from "./utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "./utils/userSlice";
 import Profile from "./components/Profile";
 import PlaylistItem from "./components/PlaylistItem";
+import Songs from "./components/Songs";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,18 +17,28 @@ function App() {
     {
       path: "/",
       element: <Home />,
+      children: [
+        {
+          path: "/",
+          element: <Browse />,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
+        },
+        {
+          path: "/items",
+          element: <PlaylistItem />,
+        },
+        {
+          path: "/songs",
+          element: <Songs />,
+        },
+      ],
     },
     {
       path: "/login",
       element: <Login />,
-    },
-    {
-      path: "/profile",
-      element: <Profile />,
-    },
-    {
-      path: "/items",
-      element: <PlaylistItem />,
     },
   ]);
 

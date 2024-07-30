@@ -76,38 +76,64 @@ const Browse = () => {
     fetchPlaylists();
   }, [accessToken]);
 
-  //   return featuredPlaylists.length === 0 ? (
-  //     <Shimmer />
-  //   ) : (
-  return searchQuery.length > 0 ? (
-    <div className="mx-5 my-5">
-      <input
-        placeholder="Search"
-        type="text"
-        className="w-96 shadow-sm border rounded-full px-4 py-2 ml-3 bg-gray-50 ring-[2px] ring-stone-700 ring-inset"
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <div className="flex flex-wrap">
-        {updatedPlaylists.map((p) => (
-          <SearchedPlaylistCard key={p.id} info={p} />
-        ))}
+  if (featuredPlaylists.length === 0) {
+    return (
+      <div className="mx-5 my-5">
+        <input
+          placeholder="Search"
+          type="text"
+          className="w-96 shadow-sm border rounded-full px-4 py-2 ml-3 bg-gray-50 ring-[2px] ring-stone-700 ring-inset"
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <Shimmer />
       </div>
-    </div>
-  ) : (
-    <div className="mx-5 my-5">
-      <input
-        placeholder="Search"
-        type="text"
-        className="w-96 shadow-sm border rounded-full px-4 py-2 ml-3 bg-gray-50 ring-[2px] ring-stone-700 ring-inset"
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <div className="flex flex-wrap">
-        {featuredPlaylists.map((play) => (
-          <FeaturedPlaylistCard key={play.id} info={play} />
-        ))}
+    );
+  } else if (searchQuery.length > 0) {
+    if (updatedPlaylists.length === 0) {
+      return (
+        <div className="mx-5 my-5">
+          <input
+            placeholder="Search"
+            type="text"
+            className="w-96 shadow-sm border rounded-full px-4 py-2 ml-3 bg-gray-50 ring-[2px] ring-stone-700 ring-inset"
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <Shimmer />
+        </div>
+      );
+    } else
+      return (
+        <div className="mx-5 my-5">
+          <input
+            placeholder="Search"
+            type="text"
+            className="w-96 shadow-sm border rounded-full px-4 py-2 ml-3 bg-gray-50 ring-[2px] ring-stone-700 ring-inset"
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <div className="flex flex-wrap">
+            {updatedPlaylists.map((p) => (
+              <SearchedPlaylistCard key={p.id} info={p} />
+            ))}
+          </div>
+        </div>
+      );
+  } else if (featuredPlaylists.length > 0) {
+    return (
+      <div className="mx-5 my-5">
+        <input
+          placeholder="Search"
+          type="text"
+          className="w-96 shadow-sm border rounded-full px-4 py-2 ml-3 bg-gray-50 ring-[2px] ring-stone-700 ring-inset"
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <div className="flex flex-wrap">
+          {featuredPlaylists.map((play) => (
+            <FeaturedPlaylistCard key={play.id} info={play} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Browse;
