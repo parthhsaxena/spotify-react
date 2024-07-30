@@ -34,7 +34,7 @@ const Search = () => {
       <input
         placeholder="Search"
         type="text"
-        className="w-96 shadow-sm border rounded-full px-4 py-2 bg-gray-50 ring-[3px] ring-emerald-500 ring-inset"
+        className="w-96 shadow-sm border rounded-full px-4 py-2 bg-gray-50 ring-[2px] ring-stone-700 ring-inset"
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       <div className="flex flex-wrap">

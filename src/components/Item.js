@@ -9,9 +9,9 @@ const Item = ({ info, index }) => {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <div className="grid grid-cols-12 gap-6 p-2 items-center cursor-default hover:bg-gray-100">
-        <div className="col-span-1 flex items-center space-x-4 ">{index}</div>
-        <div className="col-span-5 flex items-center space-x-4 ">
+      <div className="grid grid-cols-10 gap-4 p-4 items-center cursor-default hover:bg-stone-100">
+        <div className="col-span-1 flex items-center space-x-3 ">{index}</div>
+        <div className="col-span-4 flex items-center space-x-3 ">
           <img
             className="w-12 h-12 border border-black"
             src={url}
@@ -25,7 +25,7 @@ const Item = ({ info, index }) => {
         <div className="col-span-3 text-sm text-gray-500">
           {timeAgo(added_at)}
         </div>
-        <div className="col-span-3 text-sm text-gray-500">
+        <div className="col-span-2 text-sm text-gray-500">
           {millisecondsToDuration(duration_ms)}
         </div>
       </div>

@@ -13,9 +13,9 @@ const FeaturedPlaylistCard = ({ info }) => {
   return (
     <div
       onClick={handleClick}
-      className="m-2 p-2 w-48 shadow-md hover:bg-slate-200 cursor-pointer"
+      className="rounded-2xl m-2 p-2 w-48 shadow-md hover:bg-stone-100 cursor-pointer"
     >
-      <img src={url} alt="album-art" />
+      <img src={url} alt="album-art" className="rounded-2xl p-2" />
       <ul>
         <li className="font-semibold text-slate-800">{name}</li>
         <li className="text-sm text-slate-600 pt-2 line-clamp-3">
