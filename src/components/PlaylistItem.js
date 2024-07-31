@@ -36,31 +36,15 @@ const PlaylistItem = () => {
   console.log(location);
   console.log(playlistItems);
   return (
-    // <div className=" container mx-auto px-4 py-6">
-    //   <div className="bg-gradient-to-b from-stone-400 to-stone-600 rounded-r-3xl col-span-2  p-4 border border-[#9fb5a6]">
-    //     <Sidebar />
-    //   </div>
-    //   <div className="bg-white shadow overflow-hidden sm:rounded-lg cursor-default sticky top-1 ">
-    //     <div className="grid grid-cols-12 gap-4 p-4 bg-gray-700 text-white z-10">
-    //       <div className="col-span-1 font-semibold ">#</div>
-    //       <div className="col-span-5 font-semibold ">Song</div>
-    //       <div className="col-span-3 font-semibold ">Added</div>
-    //       <div className="col-span-3 font-semibold ">Duration</div>
-    //     </div>
-    //   </div>
-    //   {playlistItems?.map((p, index) => {
-    //     return <Item key={p.track.id} info={p} index={index + 1} />;
-    //   })}
-    // </div>
     <div className="container mx-auto px-4 py-6">
       <div className="fixed left-0 top-0 h-full w-1/6 bg-gradient-to-b from-stone-400 to-stone-600  p-4 border border-[#9fb5a6]">
         <Sidebar />
       </div>
       <div className="fixed right-0 top-0 h-full w-5/6 bg-white shadow overflow-auto  cursor-default">
-        <div className="sticky top-0 z-10 grid grid-cols-8 gap-4 p-4 bg-stone-600 text-white">
+        <div className="sticky top-0 z-10 grid grid-cols-10  p-4 bg-stone-600 text-white">
           <div className="col-span-1 font-semibold">Number</div>
-          <div className="col-span-3 font-semibold">Song</div>
-          <div className="col-span-2 font-semibold">Added</div>
+          <div className="col-span-4 font-semibold">Song</div>
+          <div className="col-span-3 font-semibold">Added</div>
           <div className="col-span-2 font-semibold">Duration</div>
         </div>
         <div className="overflow-auto h-full">

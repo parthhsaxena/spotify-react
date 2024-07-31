@@ -41,6 +41,7 @@ const Search = () => {
         {updatedPlaylists.map((p) => (
           <SearchedPlaylistCard key={p.name} info={p} />
         ))}
+        <button>X</button>
       </div>
     </div>
   );

@@ -23,10 +23,6 @@ function App() {
           element: <Browse />,
         },
         {
-          path: "/profile",
-          element: <Profile />,
-        },
-        {
           path: "/items",
           element: <PlaylistItem />,
         },
